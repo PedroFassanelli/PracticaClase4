@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PracticaClase4
@@ -29,7 +30,7 @@ namespace PracticaClase4
             decimal DiferenciaMinutos = SegundosEnteros / 60;
             return DiferenciaMinutos;
         }
-
+        
         // Punto 4
         public static decimal ObtenerPromedio(this List<int>Enteros)
         {
@@ -66,7 +67,21 @@ namespace PracticaClase4
         }
 
         // Punto 6
-
+        public static DateTime RetornarFecha (this string fecha)
+        {
+            DateTime FechaConvertida;
+            try
+            {
+                FechaConvertida = DateTime.Parse(fecha);
+                Console.WriteLine("Se pudo convertir.");
+            }
+            catch (FormatException)
+            {
+                FechaConvertida = DateTime.MinValue;
+                Console.WriteLine("No se pudo convertir.");
+            }
+            return FechaConvertida;
+        }
 
         // Punto 7
         public static string RetornarStringInvertido(this string texto)
@@ -78,6 +93,32 @@ namespace PracticaClase4
             }
             return invertido;          
         }
+
+        // Punto 8
+        public static string RetornarStringSeparado (this string[] palabras, char x)
+        {
+            string NuevoString = "";
+            foreach (string palabra in palabras)
+            {
+                NuevoString = NuevoString + palabra + x;
+            }
+            return NuevoString;
+        }
+
+        // Punto 9
+        public static bool ValidarMail (this string correo)
+        {
+            Regex regexMail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            return regexMail.IsMatch(correo);
+        }
+        
+        // Punto 12
+        public static int RestarEnteros (this int n1,int n2)
+        {
+            int resta = n1 - n2;
+            return resta;
+        }
+
     }
 
 }
