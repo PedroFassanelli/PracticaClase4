@@ -16,7 +16,7 @@ namespace PracticaClase4
         }
 
         // Punto 2
-        public static int ContarPalabras(this string texto,char a)
+        public static int ContarPalabras(this string texto, char a)
         {
             return texto.Split(a).Length;
         }
@@ -30,9 +30,9 @@ namespace PracticaClase4
             decimal DiferenciaMinutos = SegundosEnteros / 60;
             return DiferenciaMinutos;
         }
-        
+
         // Punto 4
-        public static decimal ObtenerPromedio(this List<int>Enteros)
+        public static decimal ObtenerPromedio(this List<int> Enteros)
         {
             decimal prom = 0;
             int c = 0;
@@ -53,7 +53,7 @@ namespace PracticaClase4
 
             foreach (int x in Enteros)
             {
-                if ( x%2==0)
+                if (x % 2 == 0)
                 {
                     suma = suma + x;
                 }
@@ -67,17 +67,19 @@ namespace PracticaClase4
         }
 
         // Punto 6
-        public static DateTime RetornarFecha (this string fecha)
+        public static DateTime RetornarFecha(this string fecha)
         {
             DateTime FechaConvertida;
             try
             {
                 FechaConvertida = DateTime.Parse(fecha);
+                //NO HACE FALTA; PODRIA RETORNAR UNA EXCEPCION O NADA
                 Console.WriteLine("Se pudo convertir.");
             }
             catch (FormatException)
             {
                 FechaConvertida = DateTime.MinValue;
+                //NO HACE FALTA; PODRIA RETORNAR UNA EXCEPCION O NADA
                 Console.WriteLine("No se pudo convertir.");
             }
             return FechaConvertida;
@@ -86,17 +88,22 @@ namespace PracticaClase4
         // Punto 7
         public static string RetornarStringInvertido(this string texto)
         {
+            //Se puede usar texto.Reverse().ToString();
+
             string invertido = "";
-            for (int i = texto.Length-1; i >= 0; i--)
+
+            for (int i = texto.Length - 1; i >= 0; i--)
             {
                 invertido += texto[i];
             }
-            return invertido;          
+
+            return invertido;
         }
 
         // Punto 8
-        public static string RetornarStringSeparado (this string[] palabras, char x)
+        public static string RetornarStringSeparado(this string[] palabras, char x)
         {
+            //se puede usar string.Join(x, palabras);
             string NuevoString = "";
             foreach (string palabra in palabras)
             {
@@ -106,14 +113,14 @@ namespace PracticaClase4
         }
 
         // Punto 9
-        public static bool ValidarMail (this string correo)
+        public static bool ValidarMail(this string correo)
         {
             Regex regexMail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             return regexMail.IsMatch(correo);
         }
-        
+
         // Punto 12
-        public static int RestarEnteros (this int n1,int n2)
+        public static int RestarEnteros(this int n1, int n2)
         {
             int resta = n1 - n2;
             return resta;
